@@ -60,5 +60,22 @@ def delete_book(book_id):
     books = [book for book in books if book['id'] != book_id]
     return jsonify({"message": "Book deleted successfully"}), 200
 
+# Route to search for books by title or author
+@app.route('/books/search', methods=['GET'])
+def search_books():
+    title_query = request.args.get('title', '').lower()
+    author_query = request.args.get('author', '').lower()
+
+    filtered_books = [
+        book for book in books
+        if (title_query in book['title'].lower() if title_query else True) and
+           (author_query in book['author'].lower() if author_query else True)
+    ]
+
+    if not filtered_books:
+        return jsonify({"message": "No books found matching the criteria"}), 404
+
+    return jsonify(filtered_books)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
