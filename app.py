@@ -46,7 +46,7 @@ def update_book(book_id):
         return jsonify({"error": "Book not found"}), 404
 
     updated_data = request.get_json()
-    if not updated_data or not 'title' in updated_data or not 'author' in updated_data:
+    if not updated_data or 'title' not in updated_data or 'author' not in updated_data:
         return jsonify({"error": "Invalid input"}), 400
 
     book['title'] = updated_data['title']
