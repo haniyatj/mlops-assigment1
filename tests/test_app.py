@@ -80,11 +80,11 @@ def test_delete_nonexistent_book(client):
 
 
 def test_search_books_by_title(client):
-    response = client.get('/books/search?title=1984')
+    response = client.get('/books/search?title=To Kill a Mockingbird')
     assert response.status_code == 200
     assert isinstance(response.json, list)
     assert len(response.json) > 0
-    assert response.json[0]['title'] == '1984'
+    assert response.json[0]['title'] == 'To Kill a Mockingbird'
 
 
 def test_search_books_by_author(client):
