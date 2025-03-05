@@ -33,7 +33,6 @@ def add_book():
     if not new_book or 'title' not in new_book or 'author' not in new_book:
         return jsonify({"error": "Invalid input"}), 400
 
-
     new_book['id'] = len(books) + 1
     books.append(new_book)
     return jsonify(new_book), 201
@@ -46,11 +45,9 @@ def update_book(book_id):
     if not book:
         return jsonify({"error": "Book not found"}), 404
 
-
     updated_data = request.get_json()
-    if not updated_data or not 'title' in updated_data or not 'author' in updated_data:
+    if not new_book or 'title' not in new_book or 'author' not in new_book:
         return jsonify({"error": "Invalid input"}), 400
-
 
     book['title'] = updated_data['title']
     book['author'] = updated_data['author']
@@ -66,7 +63,6 @@ def delete_book(book_id):
     book = next((book for book in books if book['id'] == book_id), None)
     if not book:
         return jsonify({"error": "Book not found"}), 404
-
 
     books = [book for book in books if book['id'] != book_id]
     return jsonify({"message": "Book deleted successfully"}), 200
@@ -84,14 +80,11 @@ def search_books():
            (author_query in book['author'].lower() if author_query else True)
     ]
 
-
     if not filtered_books:
         return jsonify({"message": "No books found matching the criteria"}), 404
-
 
     return jsonify(filtered_books)
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-    
