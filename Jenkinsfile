@@ -41,6 +41,7 @@ pipeline {
                     subject: 'Build Success',
                     body: 'The Jenkins build was successful!',
                     to: 'haniya911@gmail.com',
+                    debug: true
                 )
                 echo "Email sent successfully."
             }
