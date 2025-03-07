@@ -32,15 +32,15 @@ pipeline {
             }
         }
     }
-    post {
-    success {
-        emailext(
-            subject: 'Build Success',
-            body: 'The Jenkins build was successful!',
-            to: 'haniya911@gmail.com',
-            attachLog: true
-        )
-    }
-}
 
+    post {
+        success {
+            emailext(
+                subject: 'Build Success',
+                body: 'The Jenkins build was successful!',
+                to: 'haniya911@gmail.com',
+                attachLog: true
+            )
+        }
+    }
 }
