@@ -43,7 +43,7 @@ pipeline {
                     to: 'haniya911@gmail.com',
                     debug: true
                 )
-                echo "Email sent successfully."
+                echo "Email sent successfully." 
             }
         }
     }
