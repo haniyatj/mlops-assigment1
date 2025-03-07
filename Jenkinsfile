@@ -27,14 +27,14 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
                         docker.image("aiyza/mlops-assignment:${env.BUILD_ID}").push()
-                    } 
+                    }
                 }
             }
         }
     }
     post {
         success {
-            emailext body: 'The build was successful!', subject: 'Build Success', to: 'haniya911@gmail.com'
+            emailext body: 'The build was successful!!', subject: 'Build Success', to: 'haniya911@gmail.com'
         }
     }
 }
