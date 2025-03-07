@@ -35,12 +35,16 @@ pipeline {
 
     post {
         success {
-            emailext(
-                subject: 'Build Success',
-                body: 'The Jenkins build was successful!',
-                to: 'haniya911@gmail.com',
-                attachLog: true
-            )
+            script {
+                echo "Sending email to haniya911@gmail.com..."
+                emailext(
+                    subject: 'Build Success',
+                    body: 'The Jenkins build was successful!',
+                    to: 'haniya911@gmail.com',
+                    attachLog: true
+                )
+                echo "Email sent successfully."
+            }
         }
     }
 }
