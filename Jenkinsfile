@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.build("your-dockerhub-username/mlops-assignment:${env.BUILD_ID}")
+                    docker.build("haniyatariq65/mlops-assignment:${env.BUILD_ID}")
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        docker.image("your-dockerhub-username/mlops-assignment:${env.BUILD_ID}").push()
+                        docker.image("haniyatariq65/mlops-assignment:${env.BUILD_ID}").push()
                     }
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
     }
     post {
         success {
-            emailext body: 'The build was successful!', subject: 'Build Success', to: 'admin@example.com'
+            emailext body: 'The build was successful!', subject: 'Build Success', to: 'aiyza.junaid@gmail.com'
         }
     }
 }
